@@ -33,7 +33,13 @@ Code = tag "u"
 InlineMath = id
 DisplayMath = id
 Note = id
-Span = id
+function Span( s, c )
+	if string.find( c.class or "", "%f[%a]spoiler%f[%A]" ) then
+		return "[spoiler]" .. s.. "[/spoiler]"
+	else
+		return s
+	end
+end
 function Header( _, s )
 	return "[h1]" .. s .. "[/h1]"
 end
